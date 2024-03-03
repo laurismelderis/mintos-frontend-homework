@@ -9,7 +9,11 @@ const Checkbox = ({ checked = false }: CheckboxProps) => {
   return (
     <div
       className='checkbox'
-      style={{ color: checked ? '#ff0404' : '#00000000' }}
+      style={{
+        color: checked ? '#ff0404' : '#00000000',
+        background: 'transparent',
+      }}
+      role='checkbox'
     >
       x
     </div>

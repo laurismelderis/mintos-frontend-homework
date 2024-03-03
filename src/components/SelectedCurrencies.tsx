@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import SelectedCurrency from './SelectedCurrency'
+import { SelectedCurrenciesContext } from '../contexts/SelectedCurrenciesProvider'
 
-interface SelectedCurrenciesProps {
-  currencies?: Array<string>
-}
+const SelectedCurrencies = () => {
+  const { selectedCurrencies, removeCurrency } = useContext(
+    SelectedCurrenciesContext
+  )
 
-const SelectedCurrencies = ({ currencies }: SelectedCurrenciesProps) => {
   return (
     <div
       className='selected-currencies'
@@ -15,8 +16,12 @@ const SelectedCurrencies = ({ currencies }: SelectedCurrenciesProps) => {
         minHeight: '32px',
       }}
     >
-      {currencies?.map((currency) => (
-        <SelectedCurrency key={currency} currency={currency} />
+      {selectedCurrencies.map((currency) => (
+        <SelectedCurrency
+          key={currency}
+          currency={currency}
+          removeCurrency={removeCurrency}
+        />
       ))}
     </div>
   )

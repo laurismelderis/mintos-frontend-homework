@@ -2,12 +2,17 @@ import React from 'react'
 import './RemoveButton.css'
 
 interface RemoveButtonProps {
-  onClick: () => void
+  onClick?: () => void
 }
 
 const RemoveButton = ({ onClick }: RemoveButtonProps) => {
   return (
-    <button className='remove-button' type='button' onClick={onClick}>
+    <button
+      data-testid='remove-button'
+      className='remove-button'
+      type='button'
+      onClick={onClick}
+    >
       x
     </button>
   )

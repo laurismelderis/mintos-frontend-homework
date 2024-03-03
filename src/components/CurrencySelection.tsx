@@ -1,24 +1,8 @@
-import React, { useContext } from 'react'
-import CurrencyOptions from './CurrencyOptions'
+import React from 'react'
+import Currencies from './Currencies'
 import SelectedCurrencies from './SelectedCurrencies'
-import { SelectedCurrenciesContext } from '../contexts/SelectedCurrenciesProvider'
-
-const POSSIBLE_CURRENCIES = [
-  'EUR',
-  'PLN',
-  'GEL',
-  'DKK',
-  'CZK',
-  'GBP',
-  'SEK',
-  'USD',
-  'RUB',
-]
 
 const CurrencySelection = () => {
-  const { selectedCurrencies } = useContext(SelectedCurrenciesContext)
-  console.log('render')
-
   return (
     <div
       className='currency-selection-container'
@@ -30,8 +14,8 @@ const CurrencySelection = () => {
         padding: '12px',
       }}
     >
-      <SelectedCurrencies currencies={selectedCurrencies} />
-      <CurrencyOptions currencies={POSSIBLE_CURRENCIES} />
+      <SelectedCurrencies />
+      <Currencies />
     </div>
   )
 }

@@ -1,0 +1,20 @@
+.currency-option-container {
+  margin: 8px 4px;
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  border: 1px solid #bababa;
+}
+
+.currency-option-container > label {
+  padding-left: 4px;
+  color: #002b69;
+  cursor: pointer;
+  background: transparent;
+}
+
+.currency-option-container:hover {
+  background: #dfdfdf;
+}

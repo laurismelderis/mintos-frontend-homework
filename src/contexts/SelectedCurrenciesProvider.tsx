@@ -1,23 +1,44 @@
 import React, { createContext, useState } from 'react'
+import useSelectedCurrencies from '../hooks/useSelectedCurrencies'
 
 interface SelectedCurrenciesContextType {
   selectedCurrencies: Array<string>
-  setSelectedCurrencies: (currencies: Array<string>) => void
+  addCurrency: (currency: string) => void
+  removeCurrency: (currency: string) => void
+  handleCurrency: (currency: string) => void
+}
+
+interface SelectedCurrenciesProviderType {
+  children: React.JSX.Element
+  startingSelectedCurrencies?: Array<string>
 }
 
 export const SelectedCurrenciesContext =
   createContext<SelectedCurrenciesContextType>(null!)
 
-const SelectedCurrenciesProvider: React.FC<{ children: React.JSX.Element }> = ({
+const SelectedCurrenciesProvider: React.FC<SelectedCurrenciesProviderType> = ({
   children,
+  startingSelectedCurrencies,
 }) => {
-  const [selectedCurrencies, setSelectedCurrencies] = useState<Array<string>>(
-    []
-  )
+  const { selectedCurrencies, addCurrency, removeCurrency } =
+    useSelectedCurrencies(startingSelectedCurrencies)
+
+  const handleCurrency = (currency: string) => {
+    if (selectedCurrencies.includes(currency)) {
+      removeCurrency(currency)
+    } else {
+      addCurrency(currency)
+    }
+  }
 
   return (
     <SelectedCurrenciesContext.Provider
-      value={{ selectedCurrencies, setSelectedCurrencies }}
+      value={{
+        selectedCurrencies,
+        addCurrency,
+        removeCurrency,
+        handleCurrency,
+      }}
     >
       {children}
     </SelectedCurrenciesContext.Provider>

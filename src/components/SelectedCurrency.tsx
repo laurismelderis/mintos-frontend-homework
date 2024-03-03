@@ -1,26 +1,22 @@
-import React, { useContext } from 'react'
-import { SelectedCurrenciesContext } from '../contexts/SelectedCurrenciesProvider'
+import React from 'react'
 import RemoveButton from '../common/RemoveButton'
 
 interface SelectedCurrencyProps {
   currency: string
+  removeCurrency: (currency: string) => void
 }
 
-const SelectedCurrency = ({ currency }: SelectedCurrencyProps) => {
-  const { selectedCurrencies, setSelectedCurrencies } = useContext(
-    SelectedCurrenciesContext
-  )
-
+const SelectedCurrency = ({
+  currency,
+  removeCurrency,
+}: SelectedCurrencyProps) => {
   const handleRemoveCurrency = () => {
-    setSelectedCurrencies(
-      selectedCurrencies.filter(
-        (selectedCurrency) => selectedCurrency !== currency
-      )
-    )
+    removeCurrency(currency)
   }
 
   return (
     <div
+      data-testid='selected-currency'
       className='selected-currency'
       style={{
         margin: '8px 7px 8px 4px',
@@ -31,7 +27,7 @@ const SelectedCurrency = ({ currency }: SelectedCurrencyProps) => {
         fontSize: '14px',
       }}
     >
-      {currency}
+      {currency.toLowerCase()}
       <RemoveButton onClick={handleRemoveCurrency} />
     </div>
   )

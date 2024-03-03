@@ -5,7 +5,7 @@ import SelectedCurrenciesProvider from './contexts/SelectedCurrenciesProvider'
 
 const App = () => (
   <div className='main-container'>
-    <SelectedCurrenciesProvider>
+    <SelectedCurrenciesProvider startingSelectedCurrencies={[]}>
       <CurrencySelection />
     </SelectedCurrenciesProvider>
   </div>
