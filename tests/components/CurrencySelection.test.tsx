@@ -11,7 +11,7 @@ beforeEach(() => {
   )
 })
 
-describe('Currency', () => {
+describe('CurrencySelection', () => {
   it('should render currency with text "EUR"', () => {
     expect(screen.getByText('EUR')).toBeInTheDocument()
   })
