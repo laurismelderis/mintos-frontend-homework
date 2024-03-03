@@ -6,7 +6,7 @@ import SelectedCurrenciesProvider from '../../src/contexts/SelectedCurrenciesPro
 describe('Currency', () => {
   it('should render currency with text "TEST"', () => {
     render(
-      <SelectedCurrenciesProvider>
+      <SelectedCurrenciesProvider startingSelectedCurrencies={['EUR']}>
         <Currencies />
       </SelectedCurrenciesProvider>
     )
